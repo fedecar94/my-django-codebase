@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  django: &pythonbuild
+    build:
+      context: ../
+      dockerfile: ./prod/Dockerfile
+    container_name: codebase_django_prod
+    image: codebase_django_prod
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=False
+    ports:
+      - "8000:8000"
+    command: uvicorn --reload config.asgi:application --host 0.0.0.0 --log-level info --use-colors --loop uvloop

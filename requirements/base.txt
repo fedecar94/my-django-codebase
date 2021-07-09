@@ -1,0 +1,21 @@
+django>=3.2.5
+django-environ==0.4.5  # https://django-environ.readthedocs.io/en/latest/
+django-filter==2.4.0  # https://github.com/baskoopmans/django-filters
+
+argon2-cffi==20.1.0  # https://github.com/hynek/argon2_cffi
+
+redis==3.5.3 # https://github.com/andymccurdy/redis-py
+
+celery==5.1.2  # https://github.com/celery/celery
+django-celery-beat==2.2.1  # https://github.com/celery/django-celery-beat
+
+uvicorn[standard]==0.14.0  # https://www.uvicorn.org/
+
+psycopg2-binary==2.9.1  # https://www.psycopg.org/docs/
+
+ipython==7.25.0  # https://github.com/ipython
+
+djangorestframework==3.12.4  # https://www.django-rest-framework.org/
+django-filter==2.4.0  # https://django-filter.readthedocs.io/en/stable/guide/rest_framework.html
+drf-yasg==1.20.0  # https://drf-yasg.readthedocs.io/en/stable/
+djangorestframework-simplejwt==4.7.1  # https://django-rest-framework-simplejwt.readthedocs.io/en/latest/

@@ -1,0 +1,75 @@
+version: "3"
+
+services:
+  django: &pythonbuild
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: codebase_django
+    image: codebase_django
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    environment:
+      - DEBUG=True
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    command: uvicorn --reload config.asgi:application --host 0.0.0.0 --log-level debug --use-colors --loop uvloop
+    healthcheck:
+      test: curl -f http://localhost:8000/ || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 3
+
+  beat:
+    <<: *pythonbuild
+    ports: []
+    container_name: codebase_beat
+    command: celery -A config.celery beat -l INFO
+
+  worker:
+    <<: *pythonbuild
+    ports: []
+    container_name: codebase_worker
+    command: celery -A config.celery worker -l INFO
+
+  flower:
+    container_name: codebase_flower
+    image: mher/flower:0.9.7
+    depends_on:
+      - redis
+    env_file:
+      - ./.env
+    ports:
+      - "5555:5555"
+
+  redis:
+    image: redis:5.0-alpine
+    container_name: codebase_redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  db:
+    image: postgres:13-alpine
+    container_name: codebase_db
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.2:5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  db-data:
