@@ -1,16 +1,16 @@
 [project]
 name = "codebase_django"
 version = "0.1.0"
-description = "Agendamientos de codebase."
+description = "My Django codebase."
 authors = [
     "Federico Cardozo <fedecar94@outlook.com>"
 ]
-license = "MIT"
+license = "GNU General Public License v3.0"
 readme = "README.md"
 python = "^3.8"
-homepage = "https://github.com/fedecar94/codebase"
-repository = "https://github.com/fedecar94/codebase"
-documentation = "https://github.com/fedecar94/codebase"
+homepage = "https://github.com/fedecar94/my-django-codebase"
+repository = "https://github.com/fedecar94/my-django-codebase"
+documentation = "https://github.com/fedecar94/my-django-codebase"
 
 keywords = ["codebase", "django", "rest", "api"]
 
