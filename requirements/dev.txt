@@ -3,3 +3,6 @@
 whitenoise==5.2.0  # https://github.com/evansd/whitenoise/
 
 Faker==8.9.1  # https://faker.readthedocs.io/en/master/
+
+pre-commit==2.13.0
+pylint==2.9.3

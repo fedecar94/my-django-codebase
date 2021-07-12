@@ -17,6 +17,7 @@ It is designed to be dockerized and it is very important that you load the envir
 
 ## For development
 
+1. sh scripts/pre-commit.sh
 1. docker-compose build
 1. docker-compose up django
 1. (in another terminal) docker-compose exec django bash

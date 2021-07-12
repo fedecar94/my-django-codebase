@@ -17,6 +17,7 @@ Está pensado para se dockerizado y es muy importante que cargues las variables 
 
 ## Para desarrollo
 
+1. sh scripts/pre-commit.sh
 1. docker-compose build
 1. docker-compose up django
 1. (en otra terminal) docker-compose exec django bash
