@@ -1,4 +1,4 @@
-django>=3.2.5
+django==3.2.5
 django-environ==0.4.5  # https://django-environ.readthedocs.io/en/latest/
 django-filter==2.4.0  # https://github.com/baskoopmans/django-filters
 
